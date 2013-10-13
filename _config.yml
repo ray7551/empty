@@ -1,10 +1,10 @@
 #DO NOT USE TABS
-url: http://emptysea.me
-#port: 4000
+url: http://localhost:4000
+port: 4000
 baseurl: /
 permalink: /:title.html
 
-#destination: ./_site
+destination: ./_site
 
 markdown: redcarpet
 redcarpet:

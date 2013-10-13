@@ -4,13 +4,13 @@ title: Ray's emptysea
 ---
 <section id="main-content">
 	<ul>
-  {% for post in site.posts %}
-			<li>
+	{% for post in site.posts %}
+		<li>
 			{{ post.date | date_to_string }}&nbsp;&nbsp;&nbsp;
 			<a href="{{ site.url }}{{ post.url }}">
 				{{ post.title }}
 			</a>
-			</li>
-  {% endfor %}
+		</li>
+	{% endfor %}
 	</ul>
 </section>
