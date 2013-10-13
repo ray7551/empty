@@ -14,49 +14,14 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-    $(document).ready(
-      function() {
-        (function($) {
-          $(".fancybox[data-content-id]").each(function() {
-            this.href = $(this).data('content-id');
-          });
-          $(".fancybox").fancybox({
-            beforeLoad: function() {
-              var el,
-                  id = $(this.element).data('title-id');
-  
-              if (id) {
-                el = $('#' + id);
-  
-                if (el.length) {
-                  this.title = el.html();
-                }
-              }
-              if ($(this).data('content')) {
-                this.content = $(this).data('content');
-              }
-            },
-            helpers: {
-              title: {
-                type: 'inside'
-              }
-            }
-          });
-        })(jQuery);
-      }
-    );
-    </script>
     <title>Emptysea-{{page.title}}</title>
   </head>
 
   <body>
 	<div id="content" class="inner">
-		<div class="left">
+		<div id="index_icon">
 			<a id="index" href="{{site.url}}"><img id="avatar" title="Welcome to Ray's emptysea!" src="/images/avatar.jpg" /></a>
 		</div>
-		<div class="clearfix"></div>
 
 		<article class="post">
 			<h2 class="title">{{page.title}}</h2>
@@ -92,13 +57,6 @@
 	  <br>
 	  Powered by <a href="http://jekyllrb.com/">jekyll and github</a>.
 	</footer>
-
-    <script src="/javascripts/jquery.fancybox.pack.js" type="text/javascript"></script>
-    <script type="text/javascript">
-    (function($){
-      $('.fancybox').fancybox();
-    })(jQuery);
-    </script>
 
 	<img class="favicon" id="staricon" src="images/star.png" />
 	<img class="favicon" id="moonicon" src="images/moon.png" />

@@ -1,1 +1,12 @@
-baseurl: /empty
+#DO NOT USE TABS
+url: http://emptysea.me
+#port: 4000
+baseurl: /
+permalink: /:title.html
+
+#destination: ./_site
+
+markdown: redcarpet
+redcarpet:
+  extensions: [tables, autolink, no_intra_emphasis]
+  #extensions: [tables, autolink, fenced_code_blocks, no_intra_emphasis]
