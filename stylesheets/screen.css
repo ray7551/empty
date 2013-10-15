@@ -50,7 +50,7 @@ article{float:none;position:relative;z-index:0;margin:auto;padding:15px 0;width:
 
 @media screen and (max-width:1020px){article{background:#e1e1e1;border-bottom:1px solid #fff;width:100%;margin:30px auto 0;padding:15px 0;box-shadow:none;}
 }
-article h2.title{margin:20px 0 5px;border-bottom:0;text-align:center;font-weight:bold;font-size:30px;line-height:1;}
+article h2.title{margin:20px 0 35px;border-bottom:0;text-align:center;font-weight:bold;font-size:30px;line-height:1;}
 article h2.title a{color:#333;}
 article h2.title a:hover{border-bottom:0;color:#2879d0;}
 @media screen and (max-width:620px){article h2.title{font-size:18px;margin:auto;}
