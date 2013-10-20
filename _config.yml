@@ -8,5 +8,10 @@ permalink: /:title.html
 
 markdown: redcarpet
 redcarpet:
-  extensions: [tables, autolink, no_intra_emphasis]
-  #extensions: [tables, autolink, fenced_code_blocks, no_intra_emphasis]
+  extensions:
+     - hard_wrap
+     - no_intra_emphasis
+     - autolink
+     - strikethrough
+     - disable_indented_code_blocks
+     - fenced_code_blocks
