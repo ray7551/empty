@@ -1,5 +1,5 @@
 ---
-published: true
+published: false 
 layout: default
 title: linux C学习笔记（3）-C标准I/O库函数
 keywords: IO函数，C语言
