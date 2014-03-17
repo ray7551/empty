@@ -124,7 +124,7 @@ article .entry-content .video-container iframe,article .entry-content .video-con
 .archives article .meta .date:before{content:"\f073";}
 .archives article .meta .tags:before{content:"\f02c";}
 .archives article .meta .comments:before{content:"\f075";}
-#comment{padding:30px 0;margin:0 auto;width:70%;border-top:1px solid #fff;border-bottom:1px solid #ddd;}
+#comment{padding:30px 0;margin:0 auto;width:70%;}
 #comment h2.title{margin-bottom:20px;font-weight:300;font-size:25px;line-height:35px;}
 
 footer{padding:15px 0;border-top:1px solid #fff;text-align:center;font-size:.9em;}
