@@ -2,7 +2,7 @@
 url: http://emptysea.me
 #port: 4000
 baseurl: /
-permalink: /:title.html
+permalink: /blog/:year/:month/:day/:title
 
 #destination: ./_site
 
