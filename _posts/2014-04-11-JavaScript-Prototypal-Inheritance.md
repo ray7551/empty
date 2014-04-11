@@ -3,7 +3,7 @@ published: true
 layout: default
 title: JavaScript原型链继承
 keywords: JavaScript, 原型, 继承
-tags: JavaScript
+tags: JavaScript, 继承, 面向对象
 ---
 
 
@@ -164,9 +164,10 @@ dave.name = 'dave';
 dave.Introduce();
 ```
 　　值得注意的是，我们把原先的Dog构造函数改写成了对象，这实际上是对一个对象的继承。  
+　　对于如何用js实现继承，或者说如何用js写出面向对象风格的代码这一问题，答案是有很多的，这只是其中一种。感兴趣的同学可以看看下面参考阅读里面Crockford的另一篇文章《JavaScript中的类继承》和阮一峰的面向对象编程系列博文。  
 
 
-###延伸阅读
+###参考阅读
 1. 阮一峰的四篇博文：  
 [Javascript 继承机制的设计思想](http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html)  
 [Javascript 面向对象编程（一）：封装](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance.html)  
@@ -174,7 +175,7 @@ dave.Introduce();
 [Javascript 面向对象编程（三）：非构造函数的继承](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance_continued.html)  
 2. JavaScript原型继承工作原理 [译文](http://www.ituring.com.cn/article/56184)  [原文]( http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html)
 3. Douglas Crockford [Prototypal Inheritance in JavaScript](http://javascript.crockford.com/prototypal.html)
-4. js的面向对象是很灵活的，甚至可以像使用类继承那样使用js，参考 Douglas Crockford [JavaScript中的类继承](http://javascript.crockford.com/zh/inheritance.html) 
+4. Douglas Crockford [JavaScript中的类继承](http://javascript.crockford.com/zh/inheritance.html) 
 5. [Standard ECMA-262](http://www.ecma-international.org/ecma-262/5.1/#sec-4.2.1)
 6. [JavaScript对象模型-执行模型](http://www.cnblogs.com/RicCC/archive/2008/02/15/JavaScript-Object-Model-Execution-Model.html)
 
