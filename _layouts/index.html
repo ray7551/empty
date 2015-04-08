@@ -1,72 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset='utf-8'>
   <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
   <meta name="author" content="Ray">
-	<meta name="description" content="Ray's Blog">
-	<meta name="keywords" content="emptysea,php,mysql">
+  <meta name="description" content="Ray's Blog">
+  <meta name="keywords" content="emptysea,php,mysql">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<base href="{{site.url}}" />
-	<link rel="icon" type="image/x-icon" href="/images/star.png">
-  <link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <base href="{{site.url}}" />
+  <link rel="icon" type="image/x-icon" href="/images/star.png">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <!--[if lt IE 9]>
-  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="//cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
   <![endif]-->
   <title>Emptysea-{{page.title}}</title>
 </head>
 
 <body>
-	<div id="content" class="inner">
-		<div id="index_icon">
-			<a id="index" href="{{site.url}}"><img id="avatar" title="Welcome to Ray's emptysea!" src="/images/avatar.jpg" /></a>
-		</div>
-
-		<article class="post">
-			<h2 class="title">{{page.title}}</h2>
-
-			<div class="entry-content">
-				{{content}}
-			</div>
-
-		</article>
-
-		{% if page.previous or page.next %}
-		<nav id="pagenavi">
-			{% if page.previous %}
-				<a href="{{page.previous.url}}" class="prev">{{page.previous.title}}</a>
-			{% endif %}
-
-			{% if page.next %}
-				<a href="{{page.next.url}}" class="next">{{page.next.title}}</a>
-			{% endif %}
-			<div class="center"><a href="{{site.url}}">Archives</a></div>
-		</nav>
-		{% endif %}
-	</div>
-
-	<footer id="footer">
-	  <!-- social links
-	  <a href="{{.author_github_profile_link}}">github</a> •
-	  <a href="{{blog.author_google_plus_link}}">google+</a> •
-	  <a href="{{blog.author_about_me_link}}">about me</a>
-	  <br>
-	  -->
-		&copy; 2013-2014 <a href="mailto:ray7551@gmail.com">Ray</a>, all rights reserved
-	  <br>
-	  Powered by <a href="http://jekyllrb.com/" target="_blank">jekyll</a> and <a href="https://github.com/ray7551/empty" target="_blank">github</a>.
-	</footer>
-
-	<script type="text/javascript">
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-26088031-1']);
-	  _gaq.push(['_trackPageview']);
-	  (function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-	</script>
+  <div id="content" class="inner">
+    <div id="index_icon">
+      <a id="index" href="{{site.url}}"><img id="avatar" title="Welcome to Ray's emptysea!" src="/images/avatar.jpg" /></a>
+    </div>
+    <article class="post">
+      <h2 class="title">{{page.title}}</h2>
+      <div class="entry-content">
+        {{content}}
+      </div>
+    </article>
+    {% if page.previous or page.next %}
+    <nav id="pagenavi">
+      {% if page.previous %}
+      <a href="{{page.previous.url}}" class="prev">{{page.previous.title}}</a> {% endif %} {% if page.next %}
+      <a href="{{page.next.url}}" class="next">{{page.next.title}}</a> {% endif %}
+      <div class="center"><a href="{{site.url}}">Archives</a></div>
+    </nav>
+    {% endif %}
+  </div>
+  <footer id="footer">
+    <!-- social links
+    <a href="{{.author_github_profile_link}}">github</a> •
+    <a href="{{blog.author_google_plus_link}}">google+</a> •
+    <a href="{{blog.author_about_me_link}}">about me</a>
+    <br>
+    -->
+    &copy; 2013-2014 <a href="mailto:ray7551@gmail.com">Ray</a>, all rights reserved
+    <br> Powered by <a href="http://jekyllrb.com/" target="_blank">jekyll</a> and <a href="https://github.com/ray7551/empty" target="_blank">github</a>.
+  </footer>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26088031-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
 </body>
+
 </html>
