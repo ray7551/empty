@@ -1,0 +1,17 @@
+#DO NOT USE TABS
+url: http://ray7551.github.io
+#port: 4000
+baseurl: /
+permalink: /blog/:title
+
+#destination: ./_site
+
+markdown: redcarpet
+redcarpet:
+  extensions:
+     - hard_wrap
+     - no_intra_emphasis
+     - autolink
+     - strikethrough
+     - disable_indented_code_blocks
+     - fenced_code_blocks
