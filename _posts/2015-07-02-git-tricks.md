@@ -55,22 +55,26 @@ git config --global credential.helper winstore
 ###配置文件的处理
 　　有部分文件，比如配置文件，需要在版本库中存在，但是需要针对每个本地环境做适当的修改，在提交时不希望提交的文件。对这类文件，应该如何处理呢？ 
 　　gitignore只能忽略那些原来没有被track的文件，所以修改.gitignore是无效的。正确的做法是在每个clone下来的仓库中手动设置不要检查特定文件的更改情况。 
+
 ```
 % git update-index --assume-unchanged /path/to/file
 ```
 　　注意:这个方法要在每个本地环境运行一次。 
 　　如果要重新track这个文件，用`--no-assume-unchanged`参数即可
+
 ```
 git update-index --no-assume-unchanged /path/to/file
 ```
  
 ###对不需加入版本控制的文件的处理
 　　已经commit的文件即使在.gitignore中也会被跟踪，需要使用如下命令来解除对这个文件版本控制： 
+
 ```
 git rm --cached your_file
 ```
  
 　　对于IDE生成的一些目录，或者类似vendor，node_modules这些不需要出现在git版本库中的文件，可以将他们添加进.git/info/exclude中
+
 ```
 test.php            #匹配所有的test.php
 /index.local.php    #匹配工作目录下的index.local.php
@@ -82,6 +86,7 @@ test.php            #匹配所有的test.php
  
  
 ###取消对某个文件的修改
+
 ```
 git checkout -- <filename>
 ```
