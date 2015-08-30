@@ -1,7 +1,7 @@
 ---
 published: true
 layout: default
-title: Linux C 学习笔记（2）-进程的建立与运行
+title: Linux C 学习笔记（2）：进程的建立与运行
 keywords: 进程，C语言, Linux
 tags: Linux, C, 进程
 ---
