@@ -1,5 +1,5 @@
 *{margin:0;padding:0;}
-body{background:#e1e1e1;color:#333;font-weight:300;font-size:16px;font-family:"proxima-nova-1","proxima-nova-2","Helvetica Neue",Arial,"Hiragino Kaku Gothic Pro","Hiragino Sans GB","Lantinghei TC","Lantinghei SC",sans-serif;line-height:1.5;}
+body{background:#e1e1e1;color:#333;font-weight:300;font-size:16px;font-family:TIBch, 'Classic Grotesque W01', 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;line-height:1.5;}
 ::selection {background:#dee;color:#555;}
 @media screen and (max-width:1020px){body{margin:0 20px;}
 }
