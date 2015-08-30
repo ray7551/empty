@@ -29,12 +29,11 @@ img{vertical-align: bottom;border:none;}
   .inner{width:100%;}
 }
 
-#index_icon{width:118px;height:118px;margin:0 auto 20px;}
-#avatar{-webkit-transition: all 0.2s ease-out;opacity:0.8;width:100px;height:100px;border-radius:50%;box-shadow:1px 2px 3px rgb(136, 136, 136);}
-#index{display:block}
-#index:hover{border-bottom:none;}
+.navi{width:118px;height:118px;margin:0 auto 20px;}
+.navi img{-webkit-transition: all 0.2s ease-out;opacity:0.8;width:100px;height:100px;border-radius:50%;box-shadow:1px 2px 3px rgb(136, 136, 136);}
+.navi a:hover{border-bottom:none;}
 
-#avatar:hover {
+.navi img:hover {
 	opacity:1;
   -webkit-transform:scale(1.06);
   transform:scale(1.1);
