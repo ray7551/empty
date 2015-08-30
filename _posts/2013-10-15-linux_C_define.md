@@ -1,7 +1,7 @@
 ---
 published: true
 layout: default
-title: linux C 学习笔记（1）-宏定义中的 do-while
+title: Linux C 学习笔记（1）-宏定义中的 do-while
 keywords: 宏，C语言，do while
 tags: C, do while
 ---
