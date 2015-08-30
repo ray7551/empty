@@ -15,6 +15,7 @@ h2{font-weight:300;font-size:36px;line-height:1;}
 h3{display:block;margin:1.2em 0 0 0;font-weight:normal;font-size:20px;line-height:1.2;}
 @media screen and (max-width:620px){
   h3{font-size:15px;}
+  .navi {float: none;}
 }
 a{outline:0;color:#2879d0;text-decoration:none;-webkit-transition:border .25s linear;-moz-transition:border .25s linear;transition:border .25s linear;-ms-transition:border .25s linear;}
 a:hover{border-bottom:1px dashed #2879d0;}
