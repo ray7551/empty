@@ -61,7 +61,7 @@ img{vertical-align: bottom;border:none;}
     display: table-row;;
     padding: 0 0 0 30px;
     text-align: left;
-    line-height: 2em;
+    line-height: 2.5em;
   }
   #pagenavi .prev:before, #pagenavi .next:before {
     position: static;

@@ -1,7 +1,7 @@
 ---
 published: false 
 layout: default
-title: linux C学习笔记（3）-C标准I/O库函数
+title: linux C 学习笔记（3）- C 标准 I/O 库函数
 keywords: IO函数，C语言
 tags: C
 ---
