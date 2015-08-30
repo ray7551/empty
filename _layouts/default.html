@@ -82,28 +82,26 @@
   <script type="text/javascript">
     (function($){
       $('.fancybox').fancybox({
-            beforeLoad: function() {
-              var el,
-                  id = $(this.element).data('title-id');
+        beforeLoad: function() {
+          var el,
+              id = $(this.element).data('title-id');
 
-              if (id) {
-                el = $('#' + id);
-
-                if (el.length) {
-                  this.title = el.html();
-                }
-              }
-              if ($(this).data('content')) {
-                this.content = $(this).data('content');
-              }
-            },
-            helpers: {
-              title: {
-                type: 'inside'
-              }
+          if (id) {
+            el = $('#' + id);
+            if (el.length) {
+              this.title = el.html();
             }
-          });
-        });
+          }
+          if ($(this).data('content')) {
+            this.content = $(this).data('content');
+          }
+        },
+        helpers: {
+          title: {
+            type: 'inside'
+          }
+        }
+      });
     })(jQuery);
   </script>
 
