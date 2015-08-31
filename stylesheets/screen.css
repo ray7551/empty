@@ -1,7 +1,7 @@
 *{margin:0;padding:0;}
 body{
   background:#f8f8f5;
-  font: 400 18px/1.6 TIBch, 'Classic Grotesque W01', 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;
+  font: 400 18px/1.6 TIBch, 'Classic Grotesque W01', 'Helvetica Neue', Arial, 'Hiragino Sans GB W3', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;
   line-height:1.5;
   color:#333;
 }
@@ -81,7 +81,7 @@ img{vertical-align: bottom;border:none;}
   position:relative;
   margin:10px auto;
   padding:20px 0;
-  width:70%;
+  width:86%;
   min-height: 1.4em;
   border-bottom:1px solid #ddd;
 }
@@ -119,7 +119,7 @@ article{
   z-index:0;
   margin:auto;
   padding:15px 0;
-  width:70%;
+  width:86%;
   background:#fff;
   box-shadow:0 2px 6px #555;
 }
@@ -135,12 +135,6 @@ article{
 }
 article h1{
   text-align:center;
-}
-@media screen and (max-width:620px){
-  article h1{
-    font-size:24px;
-    margin:auto;
-  }
 }
 
 article .entry-content{text-align:left;line-height:1.7em;}
@@ -208,7 +202,7 @@ article .entry-content .video-container iframe,article .entry-content .video-con
 .archives article .meta .date:before{content:"\f073";}
 .archives article .meta .tags:before{content:"\f02c";}
 .archives article .meta .comments:before{content:"\f075";}
-#comment{padding:30px 0;margin:0 auto;width:70%;}
+#comment{padding:30px 0;margin:0 auto;width:86%;}
 
 footer{padding:15px 0;text-align:center;font-size:.9em;}
 article h2{padding:.3em 3%;background:#f5f5f5;box-shadow:1px 1px 1px 1px #c7c7c7;}
@@ -228,15 +222,15 @@ article .entry-content h3{margin-left: 2.1em;}
 .tags a:last-child:after{content:'';}
 .favicon{display:none;}
 
-code{margin:0 2px;padding:2px 5px;border:1px solid #e1e1e8;border-radius:3px;background-color:#f7f7f9;font-size:.8em;font-family:Monaco,Menlo,"Courier New",monospace;}
-pre code{display:block;overflow:auto;margin:0 auto 30px;padding:8px;width:85%;border:none;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background-color:#ececec;white-space:pre;line-height:20px;word-break:break-all;}
+code{margin:0 2px;padding:2px 5px;border:1px solid #e1e1e8;border-radius:3px;background-color:#f7f7f9;font-size:.8em;font-family:Monaco,Consolas,Menlo,"Courier New",monospace,'Hiragino Sans GB W3', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun;}
+pre code{display:block;overflow:auto;margin:0 auto 30px;padding:8px;width:85%;border:none;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background-color:#ececec;white-space:pre;line-height:1.6em;word-break:break-all;}
 .highlight .c{color:#998;font-style:italic;}
 .highlight .err{background-color:#e3d2d2;color:#a61717;}
 .highlight .k{font-weight:bold;}
 .highlight .o{font-weight:bold;}
 .highlight .cm{color:#998;font-style:italic;}
 .highlight .cp{color:#999;font-weight:bold;}
-.highlight .c1{color:#998;font-style:italic;}
+.highlight .c1{color:#998;}
 .highlight .cs{color:#999;font-weight:bold;font-style:italic;}
 .highlight .gd{background-color:#fdd;color:#000;}
 .highlight .gd .x{background-color:#faa;color:#000;}
