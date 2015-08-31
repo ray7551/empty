@@ -7,10 +7,9 @@ tags: JavaScript, 继承, 面向对象
 ---
 
 
-　　有类继承语言（比如Java，  C++， PHP） 学习经验的开发者在学习 Javascript 的时候会像我一样执着于这样几个个问题：构造函数的 `prototype` 属性到底是用来干什么的？里面有什么东西？原型链是什么样的？如何用 JS 实现继承？本文将围绕这些问题进行讨论。  
+　　有类继承语言（比如Java，  C++， PHP） 学习经验的开发者在学习 Javascript 的时候会像我一样执着于这样几个问题：构造函数的 `prototype` 属性到底是用来干什么的？里面有什么东西？原型链是什么样的？如何用 JS 实现继承？本文将围绕这些问题进行讨论。  
 
-
-###prototype属性的来由
+###prototype 属性的来由
 　　在围绕一个问题进行学习的时候，往往因为涉及的东西太多而无法入手，比如我们现在讨论的 JS 原型链，相信很多人会和我一样看了一大堆资料却仍感觉似懂非懂，过不了多久又忘得差不多了。这时候不妨从最根本的问题问起：为什么要有 `prototype` 属性？  
 　　我们在 chrome 的控制台输入以下语句：  
 
@@ -163,7 +162,7 @@ var dave = object(Dog);
 dave.name = 'dave';
 dave.Introduce();
 ```
-　　值得注意的是，我们把原先的Dog构造函数改写成了对象，这实际上是对一个对象的继承。  
+　　值得注意的是，我们把原先的 Dog 构造函数改写成了对象，这实际上是对一个对象的继承。  
 　　对于如何用 JS 实现继承，或者说如何用 JS 写出面向对象风格的代码这一问题，答案是有很多的，这只是其中一种。感兴趣的同学可以看看下面参考阅读里面 Crockford 的另一篇文章《JavaScript 中的类继承》和阮一峰的面向对象编程系列博文。  
 
 
@@ -175,7 +174,7 @@ dave.Introduce();
 [Javascript 面向对象编程（三）：非构造函数的继承](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance_continued.html)  
 2. JavaScript 原型继承工作原理 [译文](http://www.ituring.com.cn/article/56184)  [原文]( http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html)
 3. Douglas Crockford [Prototypal Inheritance in JavaScript](http://javascript.crockford.com/prototypal.html)
-4. Douglas Crockford [JavaScript中的类继承](http://javascript.crockford.com/zh/inheritance.html) 
+4. Douglas Crockford [JavaScript 中的类继承](http://javascript.crockford.com/zh/inheritance.html) 
 5. [Standard ECMA-262](http://www.ecma-international.org/ecma-262/5.1/#sec-4.2.1)
 6. [JavaScript 对象模型-执行模型](http://www.cnblogs.com/RicCC/archive/2008/02/15/JavaScript-Object-Model-Execution-Model.html)
 
