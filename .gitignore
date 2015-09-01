@@ -2,3 +2,4 @@
 /_site/
 _config.yml
 *.out
+/node_modules/
