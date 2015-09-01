@@ -129,11 +129,6 @@ taskSeries.run(function(results) {
 <a class="jsbin-embed" href="http://jsbin.com/kaquxe/16/embed?js,console">JS Bin on jsbin.com</a>
 
 　　像这样，用构造函数做封装之后，就不会污染全局作用域了。
-　　第二种方法，需要灵活使用闭包的能力：
-
-```javascript
-
-```
 
 
 <script src="http://static.jsbin.com/js/embed.min.js?3.34.2"></script>
