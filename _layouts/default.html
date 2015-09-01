@@ -25,7 +25,7 @@
 		<div class="clearfix"></div>
 
 		<article class="post">
-			<h2 class="title">{{page.title}}</h2>
+			<h1 class="title">{{page.title}}</h1>
 
 			<div class="entry-content">
 				{{content}}
@@ -42,7 +42,7 @@
 			{% if page.next %}
 				<a href="{{page.next.url}}" title="{{page.next.title}}" class="next">{{page.next.title|truncate: 22}}</a>
 			{% endif %}
-      <a class="center" href="http://ray7551.github.io">Archives</a>
+      <a class="center" href="{{site.url}}">Archives</a>
 		</nav>
 		{% endif %}
 
