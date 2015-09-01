@@ -9,7 +9,7 @@ tags: JavaScript, 继承, 面向对象
 
 　　有类继承语言（比如Java，  C++， PHP） 学习经验的开发者在学习 Javascript 的时候会像我一样执着于这样几个问题：构造函数的 `prototype` 属性到底是用来干什么的？里面有什么东西？原型链是什么样的？如何用 JS 实现继承？本文将围绕这些问题进行讨论。  
 
-###prototype 属性的来由
+##prototype 属性的来由
 　　在围绕一个问题进行学习的时候，往往因为涉及的东西太多而无法入手，比如我们现在讨论的 JS 原型链，相信很多人会和我一样看了一大堆资料却仍感觉似懂非懂，过不了多久又忘得差不多了。这时候不妨从最根本的问题问起：为什么要有 `prototype` 属性？  
 　　我们在 chrome 的控制台输入以下语句：  
 
@@ -74,7 +74,7 @@ Dog.species;   //undefined
 Dog.Introduce;  //undefined
 ```
 　　
-###原型链
+##原型链
 　　对应于构造函数的 `prototype` 属性，派生的对象有一个 `__proto__` 属性，用于指向它所继承的那个 prototype 对象（ `Dog.prototype === alice.__proto__` ）。
 　　如果你在控制台输入 `console.dir(Dog.prototype)` ，就会清楚地看到构造函数的 `prototype` 属性所指的那个对象到底有些什么东西。你会发现，除了我们在代码里面定义的 `species` 和 `Introduce` 之外，还有一个 `__proto__` 和一个 `constructor`。其中 `constructor` 会被继承，因为 `alice.constructor === Dog.prototype.constructor`,而 `__proto__` 则始终指向这个对象的构造器的 prototype：
 
@@ -83,7 +83,7 @@ Dog.__proto__ === Dog.constructor.prototype;        //true
 alice.__proto__ === alice.constructor.prototype;    //true
 ```
 
-####new 运算符是如何工作的
+##new 运算符是如何工作的
 　　介绍了 `__proto__`，就容易理解使用 new + 构造函数生成对象的过程了。这个过程分为三步：  
 1. 创建一个对象实例。这个对象的 __proto__ 属性设置为构造器的 prototype。
 2. 初始化实例。构造函数被传入参数并调用，关键字 this 被设定为该实例。
@@ -108,7 +108,7 @@ carol = (New(Dog))('carol');
 carol.__proto__ === alice.__proto__;  //true
 ```
 
-####原型链
+###原型链
 　　有了 `__proto__` 这个属性，我们可以从 `alice` 向上找到等同于 `Dog.prototype` 的 `alice.__proto__`，并找到我们在 Dog 的原型里定义的属性。事实上 Dog 的原型也有自己的原型，可以通过 `alice.__proto__.__porto__` 访问到。  
 　　《JavaScript秘密花园》里，关于查找对象的属性有这样一句话：
 > 当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止。  
@@ -129,7 +129,7 @@ function getProperty(obj, prop) {
 
 　　需要注意的是，`__proto__` 是一个不应在你代码中出现的非正规的用法，这里仅仅用它来解释 JavaScript 原型继承的工作原理。
 
-###JavaScript 原型继承的一种实现
+##JavaScript 原型继承的一种实现
 　　在实际应用中，我们常常需要继承某个对象，而对象是不能像构造函数那样调用的，如何实现对对象的继承呢？  
 　　Douglas Crockford 在他的 [Prototypal Inheritance in JavaScript](http://javascript.crockford.com/prototypal.html) 一文中，提出一个借助中间函数来实现原型继承的方式：
 
@@ -166,7 +166,7 @@ dave.Introduce();
 　　对于如何用 JS 实现继承，或者说如何用 JS 写出面向对象风格的代码这一问题，答案是有很多的，这只是其中一种。感兴趣的同学可以看看下面参考阅读里面 Crockford 的另一篇文章《JavaScript 中的类继承》和阮一峰的面向对象编程系列博文。  
 
 
-###参考阅读
+##参考阅读
 1. 阮一峰的四篇博文：  
 [Javascript 继承机制的设计思想](http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html)  
 [Javascript 面向对象编程（一）：封装](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance.html)  
