@@ -94,7 +94,7 @@ img{vertical-align: bottom;border:none;}
 #pagenavi .prev:before{position:absolute;bottom:1px;left:0;content:"\f060";font:1.3em FontAwesome;}
 #pagenavi .next{right:0;padding-right:30px;}
 #pagenavi .next:before{position:absolute;right:0;bottom:1px;content:"\f061";font:1.3em FontAwesome;}
-#pagenavi .center{position: absolute; left: 50%;}
+#pagenavi .center{position: absolute; left: 46%;}
 @media screen and (max-width:800px){
   #pagenavi {
     width: 94%;
