@@ -1,12 +1,12 @@
 ---
 published: true
 layout: default
-title: 异步任务的简单控制
+title: 异步任务的简单控制：串联
 keywords: async, javascript
 tags: javascript
 ---
 
-　　上篇说到异步控制的一个更复杂的情况：有多个不同的异步任务 t1、t2、t3，在不引入 Promise 机制的情况下，如何串联或并联执行。
+　　上篇说到异步控制的一个更复杂的情况：有多个不同的异步任务 t1、t2、t3，在不引入 Promise 机制的情况下，如何串联执行。
 　　为方便讨论，我们先定义三个异步任务 t1、t2、t3，将会分别从 Github API 取得不同的 response status code。
 
 ```javascript
@@ -51,7 +51,7 @@ function series() {
 series(t1, t2, t3);
 ```
 
-<a class="jsbin-embed" href="http://jsbin.com/kaquxe/6/embed?js,console">JS Bin on jsbin.com</a>
+<a class="jsbin-embed" href="http://jsbin.com/kaquxe/6/embed?js,console">在线预览</a>
 
 　　对可变参数列表（rest parameters）的处理，用到了 `Function.length` ，这个属性指的是函数声明中除 rest parameters 之外的参数个数。这个版本的缺点是不能收集每个任务的返回值。
 
@@ -78,14 +78,18 @@ series(function(results) {
 }, [t1, t2, t3]);
 ```
 
-　　这涉及到如何在程序执行过程中用合适的方式保存状态。在全局域定义一个用来存储状态的变量，然后在函数中改变它，这是比较 ugly 的做法。有两种方法可以解决，第一种是在 this 下定义一个属性：
+　　这涉及到如何在程序执行过程中用合适的方式保存状态。在全局域定义一个用来存储状态的变量，然后在函数中改变它，这是比较 ugly 的做法。有多种方法可以解决。
+
+### 使用 `this` 的版本
+
+　　第一种实现的代码比较清晰，而且比较容易理解。在 this 下定义一个属性：
 
 ```javascript
 function series(callback, tasks) {
   var task = tasks.shift();
   var self = this;
   this.results = this.results || [];
-  console.log('results:', this.results);
+
   task(function(response) {
     self.results.push(response);
     if (tasks.length > 0){
@@ -106,7 +110,6 @@ series(function(results) {
 ```javascript
 function Series(callback, tasks) {
   this.results = this.results || [];
-  console.log('results:', this.results);
 }
 Series.prototype.run = function(callback, tasks) {
   var task = tasks.shift();
@@ -122,13 +125,83 @@ Series.prototype.run = function(callback, tasks) {
 };
 var taskSeries = new Series();
 taskSeries.run(function(results) {
-  console.log(results);
+  console.log('results:', results);
 }, [t1, t2, t3]);
 ```
 
-<a class="jsbin-embed" href="http://jsbin.com/kaquxe/16/embed?js,console">JS Bin on jsbin.com</a>
+<a class="jsbin-embed" href="http://jsbin.com/kaquxe/18/embed?js,console">在线预览</a>
 
 　　像这样，用构造函数做封装之后，就不会污染全局作用域了。
 
+### 纯闭包的版本
 
-<script src="http://static.jsbin.com/js/embed.min.js?3.34.2"></script>
+　　第二种方法，可以参考 async 库的做法，需要灵活使用闭包的能力：
+
+```javascript
+var series = function(tasks, endCallback) {
+  var getKey = _nextKey(Object.keys(tasks));
+  var key = getKey.next();
+  var results = {};
+  executor(tasks, key, function(currentKey, data) {
+    results[currentKey] = data;
+    console.log('results now: ', results);
+  }, function() {
+    endCallback(results); // 把结果集 results 传递给最顶层的 endCallback
+  });
+
+};
+
+var executor = function(tasks, key, loopCallback, endCallback) {
+  tasks[key.current](function(data) {
+    console.log(key.current, ' :', data);
+    // 每个异步任务完成后，调用 loopCallback，将结果写入结果集 results
+    loopCallback(key.current, data);
+    if (key.next === undefined) {
+      // 所有异步任务完成后，调用最顶层的 endCallback
+      endCallback();
+      return;
+    }
+    executor(tasks, key.next(), loopCallback, endCallback);
+  });
+};
+
+var _nextKey = function(keys, current) {
+  current = current===undefined ? -1 : current;
+  var next;
+  if (keys[current+1]) {
+    next = function() {
+      return _nextKey(keys, current+1);
+    };
+  }
+  return {
+    next: next,
+    current: keys[current]
+  };
+};
+
+series({
+  t1: t1,
+  t2: t2,
+  t3: t3
+},
+function(results) {
+  console.log('End: results=',results);
+});
+```
+
+<a class="jsbin-embed" href="http://jsbin.com/kaquxe/21/embed?js,console">在线预览</a>
+
+　　事实上，要理清楚 async 库的 `async.series` 这部分代码，着实不易。上面的版本是去除错误处理，可变参数列表之后的修改版本，看起来还是很绕。简单分析一下上面的 `series` 函数，它做了这么几件事：
+
+- 用 `_nextKey ` 方法取得 tasks 的 `key`，并且可以用 `key.next()` 链式地取得下一个key；
+- 初始化结果集 `results`
+- 异步任务执行交给 `executor` 方法：
+    - 每个异步任务完成后，调用 loopCallback，将结果写入结果集 results
+    - 所有异步任务完成后，把结果集 results 传递给最顶层的 endCallback
+
+
+## 结语
+　　以上的几种实现，都没有引入 Promise。引入 Promise 会带来 Promise 的复杂性，对于没有完全理解它的人而言，很容易错误地使用它。在我翻译的[这篇文章](https://github.com/mattdesl/promise-cookbook/blob/master/README.zh.md#小模块中的-promise)中，还提到了一些其它的不使用 Promise 的原因。
+　　对于那些不想引入 Promise 的小类库来说，async 库是一个不错的选择。具体到串联执行异步任务这个问题，除了 async 库使用的纯回调式实现之外，还可以使用更清晰 `this` 和构造函数的版本。
+
+<!-- <script src="http://static.jsbin.com/js/embed.min.js?3.34.2"></script> -->
