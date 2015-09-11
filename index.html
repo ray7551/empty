@@ -2,15 +2,13 @@
 layout: index
 title: Ray's Blog
 ---
-<section id="articles">
-  <ul>
-  {% for post in site.posts %}
-    <li>
-      {{ post.date | date: "%F" }}&nbsp;&nbsp;&nbsp;
-      <a href="{{ site.url }}{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </li>
-  {% endfor %}
-  </ul>
-</section>
+<ul>
+{% for post in site.posts %}
+  <li>
+    {{ post.date | date: "%F" }}&nbsp;&nbsp;&nbsp;
+    <a href="{{ site.url }}{{ post.url }}">
+      {{ post.title }}
+    </a>
+  </li>
+{% endfor %}
+</ul>
