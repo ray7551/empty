@@ -27,7 +27,7 @@
 		<article class="post">
 			<h1 class="title">{{page.title}}</h1>
 
-			<div class="entry-content">
+			<div class="entry-content" target="_blank">
 				{{content}}
 			</div>
 
@@ -81,6 +81,9 @@
   <script src="//cdn.staticfile.org/fancybox/2.0.6/jquery.fancybox.pack.min.js" type="text/javascript"></script>
   <script type="text/javascript">
     (function($){
+      $('article a').each(function(index, link) {
+        link.target = "_blank";
+      });
       $('.fancybox').fancybox({
         beforeLoad: function() {
           var el,
