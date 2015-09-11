@@ -204,4 +204,4 @@ function(results) {
 　　以上的几种实现，都没有引入 Promise。引入 Promise 会带来 Promise 的复杂性，对于没有完全理解它的人而言，很容易错误地使用它。在我翻译的[这篇文章](https://github.com/mattdesl/promise-cookbook/blob/master/README.zh.md#小模块中的-promise)中，还提到了一些其它的不使用 Promise 的原因。
 　　对于那些不想引入 Promise 的小类库来说，async 库是一个不错的选择。具体到串联执行异步任务这个问题，除了 async 库使用的纯回调式实现之外，还可以使用更清晰 `this` 和构造函数的版本。
 
-<!-- <script src="http://static.jsbin.com/js/embed.min.js?3.34.2"></script> -->
+<script src="http://static.jsbin.com/js/embed.min.js?3.34.2"></script>
