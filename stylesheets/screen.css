@@ -143,7 +143,7 @@ article .entry-content .more-link{position:relative;display:block;margin-top:16p
 article .entry-content .more-link:before{position:absolute;left:0;content:"\f061";font:1.3em FontAwesome;line-height:1.6em;}
 article .entry-content ul,article .entry-content ol,article .entry-content dl{margin-left:4%;}
 article .entry-content ul ul,article .entry-content ul ol,article .entry-content ul dl,article .entry-content ol ul,article .entry-content ol ol,article .entry-content ol dl,article .entry-content dl ul,article .entry-content dl ol,article .entry-content dl dl{margin-top:0;}
-article .entry-content ul,article .entry-content ol{margin-right:6%;margin-left:12%;}
+article .entry-content>ul,article .entry-content>ol{margin-right:6%;margin-left:12%;}
 article .entry-content strong{font-weight:bold;}
 article .entry-content em{font-style:italic;}
 article .entry-content p{margin:0.5em 6%;}
