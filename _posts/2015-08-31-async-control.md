@@ -311,6 +311,6 @@ var seriesGenerator = function *(tasks) {
 
 ## 结语
 　　以上的几种实现，都没有引入 Promise。对于那些不想引入 Promise 的小类库来说，async 库是一个不错的选择。具体到串联执行异步任务这个问题，除了 async 库使用的纯回调式实现之外，还可以使用更清晰 `this` 和构造函数的版本。最后，借助 Generator，我们成功地消除了大部分的回调，异步的代码变得和同步代码一样清晰易读。
-　　很多人认为最终的解决方案，必须是 [ES7 的 async 和 await 关键字](https://jakearchibald.com/2014/es7-async-functions/)。在现阶段，基于 Generator 的方案已经可以满足基本要求了。
+　　很多人认为最终的解决方案，必须是 [ES7 的 Async Functions](http://tc39.github.io/ecmascript-asyncawait/)。在现阶段，基于 Generator 的方案已经可以满足基本要求了。
 
 <script src="http://static.jsbin.com/js/embed.min.js?3.34.2"></script>
