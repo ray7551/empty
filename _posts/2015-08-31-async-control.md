@@ -7,7 +7,7 @@ tags: javascript
 ---
 
 　　上篇说到异步控制的一个更复杂的情况：有多个不同的异步任务 t1、t2、t3，在不引入 Promise 机制的情况下，如何串联执行。
-　　为方便讨论，我们先定义三个异步任务 t1、t2、t3，将会分别从 Github API 取得不同的 response status code。
+　　为方便讨论，我们先定义三个异步任务 t1、t2、t3，将会分别从 GitHub API 取得不同的 response status code。
 
 ```javascript
 function ajax(url, callback) {
@@ -80,7 +80,7 @@ series(function(results) {
 
 　　这涉及到如何在程序执行过程中用合适的方式保存状态。在全局域定义一个用来存储状态的变量，然后在函数中改变它，这是比较 ugly 的做法。有多种方法可以解决。
 
-### 使用 `this` 的版本
+## 使用 `this` 的版本
 
 　　第一种实现的代码比较清晰，而且比较容易理解。在 this 下定义一个属性：
 
@@ -133,7 +133,7 @@ taskSeries.run(function(results) {
 
 　　像这样，用构造函数做封装之后，就不会污染全局作用域了。
 
-### 纯闭包的版本
+## 纯闭包版本
 
 　　第二种方法，可以参考 async 库的做法，需要灵活使用闭包的能力：
 
@@ -198,6 +198,107 @@ function(results) {
 - 异步任务执行交给 `executor` 方法：
     - 每个异步任务完成后，调用 loopCallback，将结果写入结果集 results
     - 所有异步任务完成后，把结果集 results 传递给最顶层的 endCallback
+
+## ES6 Generator 版本
+　　到此为止，上面所述各种方法，都是基于回调的：在执行器函数内，每个异步任务的回调中调用执行器本身去执行下一个任务，用回调 + 递归的方式完成循环。回调的方式虽然管用，但是基于回调的代码是层层嵌套的结构，让人难以理清楚它的执行流程，有没有可能让异步代码也像同步的代码一样清晰可读呢？
+　　借助 ES6 的 Generator，就可以实现：
+
+```javascript
+function ajax(url, callback) {
+  fetch(url).then(function(response) {
+    callback(response.status);
+  });
+}
+var t1 = function() {
+  ajax('https://api.github.com', function(response) {
+    console.log(200);
+    series.next(200);
+  });
+};
+// t2, t3...
+
+var seriesGenerator = function *(tasks) {
+  var results = {};
+  for (var key in tasks) {
+    if(tasks.hasOwnProperty(key)) {
+      console.log('start executing: ' + key);
+      results[key] = yield tasks[key]();
+    }
+  }
+  console.log('Results: ', results);
+
+};
+
+var series = seriesGenerator({
+  t1: t1,
+  t2: t2,
+  t3: t3
+});
+series.next();
+```
+<!-- <a class="jsbin-embed" href="http://jsbin.com/kaquxe/28/embed?js,console">在线预览</a> -->
+
+以下是控制台输出：
+
+```
+start executing: t1
+200
+start executing: t2
+401
+start executing: t3
+404
+Results:  Object {t1: 200, t2: 401, t3: 404}
+```
+
+　　`seriesGenerator` 内的代码就是一个简单的 for-in 循环，在每次循环中发起 ajax 请求，用 `yield` 中断迭代器 `series` 执行，在 ajax 请求完成之后执行 `series.next(response.status)`，来恢复迭代器运行，同时将 `response.status` 返回给 `results[key]`。
+
+## 处理数据依赖
+　　借助 Generator，可以方便地处理任务间的数据依赖。比如，我们要从 GitHub API 列表中找到搜索版本库的 API，然后搜索“async”，取结果中第一个版本库的 owner 的姓名，我们可以这样安排三个任务：
+
+```javascript
+var t1 = () => {
+  ajax('https://api.github.com', function(response) {
+    series.next(response.repository_search_url);
+  });
+};
+var t2 = (repoSearchUrl, search) => {
+  repoSearchUrl = repoSearchUrl.slice(0, repoSearchUrl.indexOf('?') + 3);
+  search = search || 'async';
+  search_url = repoSearchUrl + search;
+  ajax(search_url, function(response) {
+    series.next(response.items[0].owner.url);
+  });
+};
+var t3 = (ownerUrl) => {
+  ajax(ownerUrl, function(response) {
+    series.next(response.name);
+  });
+};
+```
+
+　　然后稍微修改一下 `seriesGenerator`：
+
+```javascript
+var seriesGenerator = function *(tasks) {
+  var results = {};
+  var prevKey;
+  for (var key in tasks) {
+    if(tasks.hasOwnProperty(key)) {
+      console.log('start executing: ' + key);
+      results[key] = yield tasks[key](results[prevKey]);
+      prevKey = key;
+    }
+  }
+  console.log('Results: ', results);
+
+};
+```
+<!-- <a class="jsbin-embed" href="http://jsbin.com/kaquxe/30/embed?js,console">在线预览</a> -->
+
+
+<!-- 根据数据依赖确定执行顺序 -->
+<!-- 错误处理 -->
+<!-- 支持可变参数列表 -->
 
 
 ## 结语
