@@ -5,7 +5,7 @@ title: Ray's Blog
 <ul>
 {% for post in site.posts %}
   <li>
-    {{ post.date | date: "%F" }}&nbsp;&nbsp;&nbsp;
+    <time xsi:type="xsd:date" datetime="{{post.date}}">{{ post.date | date: "%F" }}</time>&nbsp;&nbsp;&nbsp;
     <a href="{{ site.url }}{{ post.url }}">
       {{ post.title }}
     </a>
