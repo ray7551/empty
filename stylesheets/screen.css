@@ -72,6 +72,11 @@ img{vertical-align: bottom;border:none;}
 #articles li {
   line-height: 2.4em;
 }
+@media screen and (max-width:620px){
+  #articles li time{
+    display: none;
+  }
+}
 
 .pullquote-right:before,.pullquote-left:before{position:relative;top:7px;float:right;margin:.5em 0 1em 1.5em;padding:0;width:45%;border:0;content:attr(data-pullquote);font-size:1.4em;line-height:1.45em;}
 .pullquote-left:before{float:left;margin:.5em 1.5em 1em 0;}
