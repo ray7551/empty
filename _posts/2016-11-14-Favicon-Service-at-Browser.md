@@ -86,16 +86,17 @@ fetchImgBlob(faviconUrl).then(function(blob) {
 <a class="jsbin-embed" href="https://jsbin.com/hayoku/embed?js,output">JS Bin on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.40.2"></script>
 
 ## A downgrade solution in chrome extension
-As a downgrade solution
+As a downgrade solution, we can use chrome favicon cache. Codes below based on chrome://resources/js/icon.js
 
 ```js
-function (size, type) {
-          size = size || 16;
-          type = type || 'favicon';
+var FAVICON_URL_REGEX = /\.ico$/i;
+function getChromeIcon(url, size, type) {
+  size = size || 16;
+  type = type || 'favicon';
 
-          return 'chrome://' + type + '/size/' + size + '@1x/' +
-            // Note: Literal 'iconurl' must match FAVICON_URL_REGEX
-            (Url.FAVICON_URL_REGEX.test(this.url) ? 'iconurl/' + this.url : this.origin);
-        }
+  return 'chrome://' + type + '/size/' + size + '@1x/' +
+    // Note: Literal 'iconurl' must match FAVICON_URL_REGEX
+    (FAVICON_URL_REGEX.test(url.href) ? 'iconurl/' + url.href : url.origin);
+}
 ```
 
