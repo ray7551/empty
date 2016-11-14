@@ -7,17 +7,18 @@ tags: js favicon
 ---
 
 ## Some favicon services for free
-1. yandex
-http://favicon.yandex.net/favicon/google.com/yandex.ru/codepen.io/douban.com/readfree.me/dianying.fm
+1. [yandex](//favicon.yandex.net/favicon/google.com/yandex.ru/codepen.io/douban.com/readfree.me/dianying.fm)
 2. google
 https://www.google.com/s2/favicons?domain=vdisk.weibo.com
 https://s2.googleusercontent.com/s2/favicons?domain=css-tricks.com
 
 And I found some other service may not so reliable, such as
 [api.byi.pw/favicon](http://api.byi.pw/favicon),
-and [The Favicon Finder](https://icons.better-idea.org/).
+[The Favicon Finder](https://icons.better-idea.org/).
+
 Like yandex and google favicon service, api.byi.pw/favicon will grab favicon, and store the favicon at their own server, support http and https.
-The Favicon Finder support multiple size of favicon, but it actually give you a *redirect to origin favicon url*. The Favicon Finder is [open source](https://github.com/mat/besticon), you can deploy it at your own server.
+
+The Favicon Finder support different size of favicon, but it actually give you a __redirect to origin favicon url__. The Favicon Finder is [open source](https://github.com/mat/besticon), you can deploy it at your own server.
 
 I'd like to use yandex favicon server, although it seems like only return 16x16 favicons, but it can return multiple favicon at one time!
 
@@ -53,6 +54,7 @@ function fetchImgBlob(url) {
 ```
 ### 2. Transform Bolb object to dataURI
 Using [FileReader.readAsDataURL()](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL), we can transform a Bolb object to dataURI:
+
 ```js
 function blobToDataURI(blob) {
   return new Promise(function(resolve, reject) {
@@ -84,10 +86,10 @@ fetchImgBlob(faviconUrl).then(function(blob) {
 ```
 
 ### Demo
-<a class="jsbin-embed" href="https://jsbin.com/hayoku/embed?js,output">JS Bin on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.40.2"></script>
+<a class="jsbin-embed" href="//jsbin.com/hayoku/embed?js,output">JS Bin on jsbin.com</a><script src="//static.jsbin.com/js/embed.min.js?3.40.2"></script>
 
 ## A downgrade solution in chrome extension
-As a downgrade solution, we can use chrome favicon cache. Codes below based on chrome://resources/js/icon.js
+As a downgrade solution, we can use chrome favicon cache. Codes below based on [icon.js](chrome://resources/js/icon.js)
 
 ```js
 var FAVICON_URL_REGEX = /\.ico$/i;
@@ -100,4 +102,3 @@ function getChromeIcon(url, size, type) {
     (FAVICON_URL_REGEX.test(url.href) ? 'iconurl/' + url.href : url.origin);
 }
 ```
-
