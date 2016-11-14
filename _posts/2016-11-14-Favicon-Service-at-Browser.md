@@ -67,7 +67,8 @@ function blobToDataURI(blob) {
   });
 }
 ```
-I return a new Promise to make it thenable like `fetchImgBlob`
+I return a new Promise to make it thenable like `fetchImgBlob`.
+
 ### 3. Save the dataURI to localStorage
 ```js
 var faviconUrl = '//favicon.yandex.net/favicon/' + url.host
