@@ -96,7 +96,6 @@ var FAVICON_URL_REGEX = /\.ico$/i;
 function getChromeIcon(url, size, type) {
   size = size || 16;
   type = type || 'favicon';
-
   return 'chrome://' + type + '/size/' + size + '@1x/' +
     // Note: Literal 'iconurl' must match FAVICON_URL_REGEX
     (FAVICON_URL_REGEX.test(url.href) ? 'iconurl/' + url.href : url.origin);
