@@ -205,6 +205,7 @@ console.log(alice.constructor.prototype); // Object {}
 2. `alice.__proto__` 即是 `alice.constructor.prototype` 也即是 `Dog.prototype`，但是 `Dog.prototype` 本身也没有 constructor 属性，所以继续顺着原型链往上找 `alice.__proto__.__proto__`
 3. `alice.__proto__.__proto__` 即是 `Dog.prototype.__proto__`。前面说到，对象的 `__proto__` 始终指向这个对象的构造函数的 prototype 属性，可知 `Dog.prototype.__proto__ === Dog.prototype.constructor.prototype`，也即是 `Object.prototype`
 4. `Object.prototype` 在未被更改的情况下，就是一个标准规定的初始值，一个空的 Object，这个空的 Object 有 constructor 属性：
+
   ```javascript
   console.log(Object.prototype.constructor) // Object() { [native code] }
   ```
