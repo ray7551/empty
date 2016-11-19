@@ -3,3 +3,4 @@
 _config.yml
 *.out
 /node_modules/
+.idea

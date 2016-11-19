@@ -1,8 +1,7 @@
 *{margin:0;padding:0;}
 body{
   background:#f8f8f5;
-  font: 400 16px/1.7 TIBch, 'Classic Grotesque W01', 'Helvetica Neue', Arial, 'Hiragino Sans GB W3', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;
-  line-height:1.5;
+  font: 400 16px/1.7 TIBch, 'Classic Grotesque W01', 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;
   color:#333;
 }
 ::selection {background:#dee;color:#555;}
