@@ -36,11 +36,11 @@
 		{% if page.previous or page.next %}
 		<nav id="pagenavi">
 			{% if page.previous %}
-				<a href="{{page.previous.url}}" title="{{page.previous.title}}" class="prev">{{page.previous.title|truncate: 22}}</a>
+				<a href="{{page.previous.url}}" title="{{page.previous.title}}" class="prev">&nbsp;&nbsp;{{page.previous.title|truncate: 22}}</a>
 			{% endif %}
 
 			{% if page.next %}
-				<a href="{{page.next.url}}" title="{{page.next.title}}" class="next">{{page.next.title|truncate: 22}}</a>
+				<a href="{{page.next.url}}" title="{{page.next.title}}" class="next">{{page.next.title|truncate: 22}}&nbsp;&nbsp;</a>
 			{% endif %}
       <a class="center" href="{{site.url}}">Archives</a>
 		</nav>
