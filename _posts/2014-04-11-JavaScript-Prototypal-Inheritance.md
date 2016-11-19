@@ -204,8 +204,7 @@ console.log(alice.constructor.prototype); // Object {}
 1. `alice` 本身没有 constructor 属性，顺着原型链找到 `alice.__proto__`
 2. `alice.__proto__` 即是 `alice.constructor.prototype` 也即是 `Dog.prototype`，但是 `Dog.prototype` 本身也没有 constructor 属性，所以继续顺着原型链往上找 `alice.__proto__.__proto__`
 3. `alice.__proto__.__proto__` 即是 `Dog.prototype.__proto__`。前面说到，对象的 `__proto__` 始终指向这个对象的构造函数的 prototype 属性，可知 `Dog.prototype.__proto__ === Dog.prototype.constructor.prototype`，也即是 `Object.prototype`
-4. `Object.prototype` 在未被更改的情况下，就是一个标准规定的初始值，一个空的 Object，这个空的 Object 有 constructor 属性：
-
+4. `Object.prototype` 在未被更改的情况下，就是一个标准规定的初始值，一个空的 Object，这个空的 Object 有 constructor 属性：  
   ```javascript
   console.log(Object.prototype.constructor) // Object() { [native code] }
   ```
@@ -251,7 +250,7 @@ dave.Introduce();
 　　对于如何继承构造函数，或者说如何用 JS 写出面向对象风格的代码这一问题，答案是有很多的，这只是其中一种。感兴趣的同学可以看看下面参考阅读里面 Crockford 的另一篇文章《JavaScript 中的类继承》和阮一峰的面向对象编程系列博文。  
 
 
-##参考阅读
+## 参考阅读
 1. 阮一峰的四篇博文：  
 [Javascript 继承机制的设计思想](http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html)  
 [Javascript 面向对象编程（一）：封装](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance.html)  
