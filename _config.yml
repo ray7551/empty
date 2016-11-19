@@ -6,7 +6,7 @@ permalink: /blog/:title
 
 #destination: ./_site
 
-markdown: redcarpet
+markdown: kramdown
 redcarpet:
   extensions:
      - hard_wrap
