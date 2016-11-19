@@ -156,9 +156,6 @@ console.log(alice.species);
 
 　　最后输出的结果应该是 "hairy animal"，根据上面所说的 `new` 操作符的工作过程，`Dog.prototype.species` 会先出现在 `alice` 的原型链上，之后构造函数才会被调用，`alice.species` 被覆盖。
 
-### 实例属性
-　　使用 new 操作符生成一个新实例
-
 ### 一种常见的破坏原型链的写法
 　　经常看到的一种构造函数的写法是：
 
@@ -208,10 +205,9 @@ console.log(alice.constructor.prototype); // Object {}
 2. `alice.__proto__` 即是 `alice.constructor.prototype` 也即是 `Dog.prototype`，但是 `Dog.prototype` 本身也没有 constructor 属性，所以继续顺着原型链往上找 `alice.__proto__.__proto__`
 3. `alice.__proto__.__proto__` 即是 `Dog.prototype.__proto__`。前面说到，对象的 `__proto__` 始终指向这个对象的构造函数的 prototype 属性，可知 `Dog.prototype.__proto__ === Dog.prototype.constructor.prototype`，也即是 `Object.prototype`
 4. `Object.prototype` 在未被更改的情况下，就是一个标准规定的初始值，一个空的 Object，这个空的 Object 有 constructor 属性：
-
-```javascript
-console.log(Object.prototype.constructor) // Object() { [native code] }
-```
+  ```javascript
+  console.log(Object.prototype.constructor) // Object() { [native code] }
+  ```
 5. 最终找到 `alice.constructor.prototype` 就是 `Object.prototype`，一个空的 Object。
 
 　　问题就出在 `Dog.prototype.constructor` 没有指向 `Dog` 本身。为保持原型链正确，必须在构造函数的 prototype 属性重新赋值以后手动指定构造函数的 `prototype.constructor` 为构造函数本身。
