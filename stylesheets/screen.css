@@ -1,7 +1,11 @@
 *{margin:0;padding:0;}
+br {line-height: 2.4}
+li {line-height: 2;}
+p code{display: inline-block;}
+li pre code {display: inline-block;}
 body{
   background:#f8f8f5;
-  font: 400 16px/1.7 TIBch, 'Classic Grotesque W01', 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;
+  font: normal 16px/1.8 TIBch, 'Classic Grotesque W01', 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;
   color:#333;
 }
 ::selection {background:#dee;color:#555;}
@@ -69,7 +73,7 @@ img{vertical-align: bottom;border:none;}
 .navi a:hover{border-bottom:none;}
 
 #articles li {
-  line-height: 2.4em;
+  line-height: 2.4;
 }
 @media screen and (max-width:620px){
   #articles li time{
@@ -140,10 +144,10 @@ article h1{
   text-align:center;
 }
 
-article .entry-content{text-align:left;line-height:1.7em;}
+article .entry-content{text-align:left;}
 article .entry-content a:hover{text-decoration:none;}
 article .entry-content .more-link{position:relative;display:block;margin-top:16px;padding-left:30px;border-bottom:0;}
-article .entry-content .more-link:before{position:absolute;left:0;content:"\f061";font:1.3em FontAwesome;line-height:1.6em;}
+article .entry-content .more-link:before{position:absolute;left:0;content:"\f061";font:1.3em FontAwesome;}
 article .entry-content ul,article .entry-content ol,article .entry-content dl{margin-left:4%;}
 article .entry-content ul ul,article .entry-content ul ol,article .entry-content ul dl,article .entry-content ol ul,article .entry-content ol ol,article .entry-content ol dl,article .entry-content dl ul,article .entry-content dl ol,article .entry-content dl dl{margin-top:0;}
 article .entry-content>ul,article .entry-content>ol{margin-right:6%;margin-left:12%;}
@@ -225,8 +229,8 @@ article .entry-content h3{margin-left: 2.1em;}
 .tags a:last-child:after{content:'';}
 .favicon{display:none;}
 
-code{margin:0 2px;padding:2px 5px;border:1px solid #e1e1e8;border-radius:3px;background-color:#f7f7f9;font-size:.8em;font-family:Monaco,Consolas,Menlo,"Courier New",monospace,'Hiragino Sans GB W3', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun;}
-pre code{display:block;overflow:auto;margin:0 auto 30px;padding:8px;width:85%;border:none;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background-color:#ececec;white-space:pre;line-height:1.6em;word-break:break-all;}
+code{margin:0 2px;padding:2px 5px;border-radius:3px;background-color:#f7f7f9;font-size:.8em;font-family:Monaco,Consolas,Menlo,"Courier New",monospace,'Hiragino Sans GB W3', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun;}
+pre code{display:block;overflow:auto;margin:0 auto;padding:8px;width:78%;border:none;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background-color:#ececec;white-space:pre;line-height:1.6em;word-break:break-all;}
 .highlight .c{color:#998;font-style:italic;}
 .highlight .err{background-color:#e3d2d2;color:#a61717;}
 .highlight .k{font-weight:bold;}

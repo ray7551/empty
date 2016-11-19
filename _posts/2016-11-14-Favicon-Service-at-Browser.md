@@ -8,17 +8,15 @@ tags: js favicon
 
 ## Some favicon services for free
 1. [yandex](//favicon.yandex.net/favicon/google.com/yandex.ru/codepen.io/douban.com/readfree.me/dianying.fm)
-2. google
-https://www.google.com/s2/favicons?domain=vdisk.weibo.com
-https://s2.googleusercontent.com/s2/favicons?domain=css-tricks.com
+2. [google](https://www.google.com/s2/favicons?domain=vdisk.weibo.com) or [googleusercontent](https://s2.googleusercontent.com/s2/favicons?domain=css-tricks.com)
+3. [api.byi.pw/favicon](http://api.byi.pw/favicon)
+4. [The Favicon Finder](https://icons.better-idea.org/)
 
-And I found some other service may not so reliable, such as
-[api.byi.pw/favicon](http://api.byi.pw/favicon),
-[The Favicon Finder](https://icons.better-idea.org/).
+The last two service may not so reliable.
 
 Like yandex and google favicon service, api.byi.pw/favicon will grab favicon, and store the favicon at their own server, support http and https.
 
-The Favicon Finder support different size of favicon, but it actually give you a __redirect to origin favicon url__. The Favicon Finder is [open source](https://github.com/mat/besticon), you can deploy it at your own server.
+The Favicon Finder support different size of favicon, but it actually give you a __redirect to origin favicon url__. And it is [open source](https://github.com/mat/besticon), you can deploy it at your own server.
 
 I'd like to use yandex favicon server, although it seems like only return 16x16 favicons, but it can return multiple favicon at one time!
 

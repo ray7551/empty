@@ -73,9 +73,9 @@ console.log(Dog.species);   //undefined
 console.log(Dog.Introduce);  //undefined
 ```
 
-　　
+
 ## 原型链
-　　对应于构造函数的 `prototype` 属性，派生的对象有一个 `__proto__` 属性，用于指向它所继承的那个 prototype 对象（ `Dog.prototype === alice.__proto__` ）。
+　　对应于构造函数的 `prototype` 属性，派生的对象有一个 `__proto__` 属性，用于指向它所继承的那个 prototype 对象（ `Dog.prototype === alice.__proto__` ）。  
 　　如果在控制台输入 `console.dir(Dog.prototype)` ，就会清楚地看到构造函数的 `prototype` 属性所指的那个对象到底有些什么东西：
 
 ```
@@ -196,7 +196,7 @@ var alice = new Dog('alice');
 console.log(alice.constructor.prototype); // Object {}
 ```
 
-　　`Dog.prototype` 被重新赋值之前，`Dog.prototype.constructor` 被自动设为了 `Dog` 本身，这是 js 函数的一个特性。在`Dog.prototype` 被重新赋值为一个新的 Object 实例之后，`Dog.prototype.constructor` 变成了 Object，`Dog.prototype.hasOwnProperty('constructor');` 的结果变成了 false。
+　　`Dog.prototype` 被重新赋值之前，`Dog.prototype.constructor` 被自动设为了 `Dog` 本身，这是 js 函数的一个特性。在`Dog.prototype` 被重新赋值为一个新的 Object 实例之后，`Dog.prototype.constructor` 变成了 Object，`Dog.prototype.hasOwnProperty('constructor');` 的结果变成了 false。  
 　　于是获取 `alice.constructor.prototype` 的过程就是这样：
 
 ![block](/images/post/prototype_wrong_chian.png "a wrong prototype chian")
@@ -205,9 +205,9 @@ console.log(alice.constructor.prototype); // Object {}
 2. `alice.__proto__` 即是 `alice.constructor.prototype` 也即是 `Dog.prototype`，但是 `Dog.prototype` 本身也没有 constructor 属性，所以继续顺着原型链往上找 `alice.__proto__.__proto__`
 3. `alice.__proto__.__proto__` 即是 `Dog.prototype.__proto__`。前面说到，对象的 `__proto__` 始终指向这个对象的构造函数的 prototype 属性，可知 `Dog.prototype.__proto__ === Dog.prototype.constructor.prototype`，也即是 `Object.prototype`
 4. `Object.prototype` 在未被更改的情况下，就是一个标准规定的初始值，一个空的 Object，这个空的 Object 有 constructor 属性：  
-  ```javascript
-  console.log(Object.prototype.constructor) // Object() { [native code] }
-  ```
+   ```javascript
+   console.log(Object.prototype.constructor) // Object() { [native code] }
+   ```
 5. 最终找到 `alice.constructor.prototype` 就是 `Object.prototype`，一个空的 Object。
 
 　　问题就出在 `Dog.prototype.constructor` 没有指向 `Dog` 本身。为保持原型链正确，必须在构造函数的 prototype 属性重新赋值以后手动指定构造函数的 `prototype.constructor` 为构造函数本身。
@@ -224,7 +224,7 @@ function object(o) {
     return new F();
 }
 ```
-　　如果我们允许使用 __proto__ ，那我们也可以这样写：
+　　如果我们允许使用 `__proto__`，那我们也可以这样写：
 
 ```javascript
 object = function (parent) {

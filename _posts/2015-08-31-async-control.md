@@ -6,15 +6,15 @@ keywords: async, javascript
 tags: javascript
 ---
 
-　　上篇说到异步控制的一个更复杂的情况：有多个不同的异步任务 t1、t2、t3，在不引入 Promise 机制的情况下，如何串联执行。对于那些不想引入 Promise 的小类库来说，这个问题有重要意义。
-　　引入 Promise 会带来 Promise 的复杂性，对于没有完全理解它的人而言，很容易错误地使用它。在我翻译的[这篇文章](https://github.com/mattdesl/promise-cookbook/blob/master/README.zh.md#小模块中的-promise)中，还提到了一些其它的不使用 Promise 的原因。
+　　上篇说到异步控制的一个更复杂的情况：有多个不同的异步任务 t1、t2、t3，在不引入 Promise 机制的情况下，如何串联执行。对于那些不想引入 Promise 的小类库来说，这个问题有重要意义。  
+　　引入 Promise 会带来 Promise 的复杂性，对于没有完全理解它的人而言，很容易错误地使用它。在我翻译的[这篇文章](https://github.com/mattdesl/promise-cookbook/blob/master/README.zh.md#小模块中的-promise)中，还提到了一些其它的不使用 Promise 的原因。  
 　　解决这个问题，有三个思路：
 
 1. 使用类似 async 库的做法，使用原始的回调式写法，控制异步任务流程；
 2. 基本原理和第一个思路一样基于回调，区别在于用构造函数封装变量；
 3. 基于 ES6 Generator 实现。
 
-　　本文将从最简单原始的实现开始，依次实现三种做法。
+　　本文将从最简单原始的实现开始，依次实现三种做法。  
 　　为方便讨论，我们先定义三个异步任务 t1、t2、t3，将会分别从 GitHub API 取得不同的 response status code。
 
 ```javascript
@@ -178,7 +178,7 @@ series(function(results) {
 }, [t1, t2, t3]);
 ```
 
-　　与传统面向对象语言不同，JavaScript 中，一个函数中的 `this` 所指的并不是某个类的实例，而是指向调用函数的对象。正因为 `this` 是代表调用函数的对象，它所指的对象是随函数使用场合而变化的。可以注意到，在 series 内将 `this` 赋给 `self`，就是因为，在内层的匿名函数中， `this` 已经变了。在 ECMAScript 5 环境下，这种给 `this` 另取一个名字的方式可以用 [Function.prototype.bind](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) 方法代替。bind 方法在原函数的基础上创建了一个新的函数，并可以指定新的函数中 this 所指的对象。
+　　与传统面向对象语言不同，JavaScript 中，一个函数中的 `this` 所指的并不是某个类的实例，而是指向调用函数的对象。正因为 `this` 是代表调用函数的对象，它所指的对象是随函数使用场合而变化的。可以注意到，在 series 内将 `this` 赋给 `self`，就是因为，在内层的匿名函数中， `this` 已经变了。在 ECMAScript 5 环境下，这种给 `this` 另取一个名字的方式可以用 [Function.prototype.bind](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) 方法代替。bind 方法在原函数的基础上创建了一个新的函数，并可以指定新的函数中 this 所指的对象。  
 　　仔细分析一下这个方法，其实在全局域调用 series 函数的时候， series 函数里的 this 就是全局对象，执行它的时候会污染全局作用域。所以这个方法还有改进的空间：
 
 ```javascript
@@ -208,7 +208,7 @@ taskSeries.run(function(results) {
 　　像这样，用构造函数做封装之后，就不会污染全局作用域了。
 
 ## ES6 Generator 版本
-　　到此为止，上面所述各种方法，都是基于回调的：在执行器函数内，每个异步任务的回调中调用执行器本身去执行下一个任务，用回调 + 递归的方式完成循环。回调的方式虽然管用，但是基于回调的代码是层层嵌套的结构，让人难以理清楚它的执行流程，有没有可能让异步代码也像同步的代码一样清晰可读呢？
+　　到此为止，上面所述各种方法，都是基于回调的：在执行器函数内，每个异步任务的回调中调用执行器本身去执行下一个任务，用回调 + 递归的方式完成循环。回调的方式虽然管用，但是基于回调的代码是层层嵌套的结构，让人难以理清楚它的执行流程，有没有可能让异步代码也像同步的代码一样清晰可读呢？  
 　　借助 ES6 的 Generator，就可以实现：
 
 ```javascript
@@ -310,7 +310,7 @@ var seriesGenerator = function *(tasks) {
 
 
 ## 结语
-　　以上的几种实现，都没有引入 Promise。对于那些不想引入 Promise 的小类库来说，async 库是一个不错的选择。具体到串联执行异步任务这个问题，除了 async 库使用的纯回调式实现之外，还可以使用更清晰 `this` 和构造函数的版本。最后，借助 Generator，我们成功地消除了大部分的回调，异步的代码变得和同步代码一样清晰易读。
+　　以上的几种实现，都没有引入 Promise。对于那些不想引入 Promise 的小类库来说，async 库是一个不错的选择。具体到串联执行异步任务这个问题，除了 async 库使用的纯回调式实现之外，还可以使用更清晰 `this` 和构造函数的版本。最后，借助 Generator，我们成功地消除了大部分的回调，异步的代码变得和同步代码一样清晰易读。  
 　　很多人认为最终的解决方案，必须是 [ES7 的 Async Functions](http://tc39.github.io/ecmascript-asyncawait/)。在现阶段，基于 Generator 的方案已经可以满足基本要求了。
 
 <script src="http://static.jsbin.com/js/embed.min.js?3.34.2"></script>
