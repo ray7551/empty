@@ -6,8 +6,6 @@ keywords: JavaScript, 原型, 继承
 tags: JavaScript, 继承, 面向对象
 ---
 
-* TOC
-{:toc}
 
 　　有类继承语言（比如Java，  C++， PHP） 学习经验的开发者在学习 Javascript 的时候会像我一样执着于这样几个问题：构造函数的 `prototype` 属性到底是用来干什么的？里面有什么东西？原型链是什么样的？如何用 JS 实现继承？本文将围绕这些问题进行讨论。  
 
