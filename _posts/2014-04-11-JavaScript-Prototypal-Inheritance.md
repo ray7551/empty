@@ -21,7 +21,7 @@ function Dog(name) {
   this.Introduce = function () {
     alert("My name is " + this.name);
   };
-};
+}
 var alice = new Dog("alice");
 var bob = new Dog("bob");
 ```
@@ -40,7 +40,7 @@ console.log(alice.Introduce == bob.Introduce);  //false
 ```javascript
 function Dog(name) {
   this.name = name;
-};
+}
 Dog.prototype.species = "animal";
 Dog.prototype.Introduce = function () {
   alert("My name is " + this.name);
@@ -108,7 +108,7 @@ alice.__proto__ === alice.constructor.prototype;    //true
 
 ```javascript
 //http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html
-function New (f) {
+function New(f) {
     var n = {'__proto__': f.prototype};   /*step 1*/
     return function () {
         f.apply(n, arguments);            /*step 2*/
@@ -139,7 +139,7 @@ function getProperty(obj, prop) {
     }else{
         return undefined;
     }
-};
+}
 ```
 
 　　现在我们可以做一个小测试：
@@ -148,7 +148,7 @@ function getProperty(obj, prop) {
 function Dog(name) {
   this.name = name;
   this.species = 'hairy animal';
-};
+}
 Dog.prototype.species = "animal";
 var alice = new Dog('alice');
 console.log(alice.species);
@@ -162,7 +162,7 @@ console.log(alice.species);
 ```javascript
 function Dog(name) {
   this.name = name;
-}; // now Dog.prototype.constructor === Dog
+} // now Dog.prototype.constructor === Dog
 Dog.prototype = {
     species : "animal",
     Introduce : function () {
@@ -178,7 +178,7 @@ console.log(alice.constructor.prototype); // Object {}
 ```javascript
 function Dog(name) {
   this.name = name;
-};
+}
 console.log(Dog.prototype.constructor === Dog); // true
 console.log(Dog.prototype.hasOwnProperty('constructor')); // true
 
@@ -186,7 +186,7 @@ var proto = new Object();
 proto.species = "animal";
 proto.Introduce = function () {
     alert("My name is " + this.name);
-}
+};
 Dog.prototype = proto;
 
 console.log(Dog.prototype.constructor === Object); // true
@@ -199,14 +199,14 @@ console.log(alice.constructor.prototype); // Object {}
 　　`Dog.prototype` 被重新赋值之前，`Dog.prototype.constructor` 被自动设为了 `Dog` 本身，这是 js 函数的一个特性。在`Dog.prototype` 被重新赋值为一个新的 Object 实例之后，`Dog.prototype.constructor` 变成了 Object，`Dog.prototype.hasOwnProperty('constructor');` 的结果变成了 false。  
 　　于是获取 `alice.constructor.prototype` 的过程就是这样：
 
-![block](/images/post/prototype_wrong_chian.png "a wrong prototype chian")
+![block](/images/post/prototype_wrong_chian.png "a wrong prototype chain")
 
 1. `alice` 本身没有 constructor 属性，顺着原型链找到 `alice.__proto__`
 2. `alice.__proto__` 即是 `alice.constructor.prototype` 也即是 `Dog.prototype`，但是 `Dog.prototype` 本身也没有 constructor 属性，所以继续顺着原型链往上找 `alice.__proto__.__proto__`
 3. `alice.__proto__.__proto__` 即是 `Dog.prototype.__proto__`。前面说到，对象的 `__proto__` 始终指向这个对象的构造函数的 prototype 属性，可知 `Dog.prototype.__proto__ === Dog.prototype.constructor.prototype`，也即是 `Object.prototype`
 4. `Object.prototype` 在未被更改的情况下，就是一个标准规定的初始值，一个空的 Object，这个空的 Object 有 constructor 属性：  
    ```javascript
-   console.log(Object.prototype.constructor) // Object() { [native code] }
+   console.log(Object.prototype.constructor); // Object() { [native code] }
    ```
 5. 最终找到 `alice.constructor.prototype` 就是 `Object.prototype`，一个空的 Object。
 
