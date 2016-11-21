@@ -154,7 +154,7 @@ var alice = new Dog('alice');
 console.log(alice.species);
 ```
 
-　　最后输出的结果应该是 "hairy animal"，根据上面所说的 `new` 操作符的工作过程，`Dog.prototype.species` 会先出现在 `alice` 的原型链上，之后构造函数才会被调用，`alice.species` 被覆盖。
+　　最后输出的结果应该是 "hairy animal"，根据上面所说的 `new` 操作符的工作过程，`Dog.prototype.species` 会先出现在 `alice` 的原型链上，之后构造函数才会被调用，`alice.species` 被覆盖。这也是为什么 像 `this.name` 和 `this.species` 这样的 **实例属性必须在构造函数内部初始化**。
 
 ### 一种常见的破坏原型链的写法
 　　经常看到的一种构造函数的写法是：
