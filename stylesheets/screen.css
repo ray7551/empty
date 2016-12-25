@@ -47,8 +47,8 @@ p {
 blockquote {
   font-family: "Xin Gothic", "Droid Sans Fallback", STKaiti, KaiTi, FangSong, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;
 }
-
-a{outline:0;color:#333;
+a{outline:0;color:#2879d0;text-decoration:none;}
+.fancy-underline a{
   text-decoration:none;
   -webkit-transition: all .3s linear;
   -moz-transition: all .3s linear;
@@ -56,15 +56,8 @@ a{outline:0;color:#333;
   -ms-transition: all .3s linear;
   text-shadow: -1px 0 0 white,1px 0 0 white,-2px 0 0 white,2px 0 0 white;
 }
-a:hover {
-  color: #2879d0;
-  text-decoration: none;
-  background: linear-gradient(to bottom, #fff 50%, #2879d0 50%) repeat-x 0 .9em;
-  background-size: .2em .2em;
-}
-.fancy-underline a {
-  text-shadow: -1px 0 0 white,1px 0 0 white,-2px 0 0 white,2px 0 0 white;
-  background: linear-gradient(to bottom, #fff 50%, #333 50%) repeat-x 0 .9em;
+.fancy-underline a:hover {
+  background: linear-gradient(to bottom, #fff 50%, #2879d0 50%) repeat-x 0 .94em;
   background-size: .2em .2em;
 }
 
@@ -162,9 +155,19 @@ article h1 {
   text-align:center;
 }
 
-article .entry-content{
-  text-align:left;
+article .entry-content{text-align:left;}
+article.post .entry-content a{
+  color: #333;
+  text-decoration:none;
+  -webkit-transition: all .3s linear;
+  -moz-transition: all .3s linear;
+  transition: all .3s linear;
+  -ms-transition: all .3s linear;
+  text-shadow: -1px 0 0 white,1px 0 0 white,-2px 0 0 white,2px 0 0 white;
+  background: linear-gradient(to bottom, #fff 50%, #333 50%) repeat-x 0 .98em;
+  background-size: .2em .2em;
 }
+article.post .entry-content a:hover {color: #2879d0;}
 article .entry-content .more-link{position:relative;display:block;margin-top:16px;padding-left:30px;border-bottom:0;}
 article .entry-content .more-link:before{position:absolute;left:0;content:"\f061";font-family: FontAwesome;}
 article .entry-content ul,article .entry-content ol,article .entry-content dl{margin-left:4%;}

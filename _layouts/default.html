@@ -24,7 +24,7 @@
     </div>
 		<div class="clearfix"></div>
 
-		<article class="post fancy-underline">
+		<article class="post">
 			<h1 class="title">{{page.title}}</h1>
 
 			<div class="entry-content" target="_blank">
@@ -34,7 +34,7 @@
 		</article>
 
 		{% if page.previous or page.next %}
-		<nav id="pagenavi">
+		<nav id="pagenavi" class="fancy-underline">
 			{% if page.previous %}
 				<a href="{{page.previous.url}}" title="{{page.previous.title}}" class="prev">&nbsp;&nbsp;{{page.previous.title|truncate: 22}}</a>
 			{% endif %}
@@ -65,8 +65,8 @@
 	</div>
 
 
-	<footer id="footer">
-		&copy; 2013-2015 <a href="mailto:ray7551@gmail.com">Ray</a>, all rights reserved
+	<footer id="footer" class="fancy-underline">
+		&copy; 2013-2017 <a href="mailto:ray7551@gmail.com">Ray</a>, all rights reserved
 	  <br>
 	  Powered by <a href="http://jekyllrb.com/" target="_blank">jekyll</a> and <a href="https://github.com/ray7551/ray7551.github.io" target="_blank">github</a>.
 	</footer>
