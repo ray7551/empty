@@ -164,7 +164,7 @@ article.post .entry-content a{
   transition: all .3s linear;
   -ms-transition: all .3s linear;
   text-shadow: -1px 0 0 white,1px 0 0 white,-2px 0 0 white,2px 0 0 white;
-  background: linear-gradient(to bottom, #fff 50%, #333 50%) repeat-x 0 .98em;
+  background: linear-gradient(to bottom, #fff 50%, #333 50%) repeat-x 0 .94em;
   background-size: .2em .2em;
 }
 article.post .entry-content a:hover {color: #2879d0;}
