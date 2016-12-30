@@ -42,6 +42,7 @@ $iconLinks.forEach(function($link){
 
 ## Use localStorage as cache
 Let's store the favicon to the localStorage.
+
 ### 1. Get Blob object of image
 ```js
 function fetchImgBlob(url) {
@@ -50,6 +51,7 @@ function fetchImgBlob(url) {
   });
 }
 ```
+
 ### 2. Transform Bolb object to dataURI
 Using [FileReader.readAsDataURL()](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL), we can transform a Bolb object to dataURI:
 
