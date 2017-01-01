@@ -52,8 +52,8 @@ function fetchImgBlob(url) {
 }
 ```
 
-### 2. Transform Bolb object to dataURI
-Using [FileReader.readAsDataURL()](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL), we can transform a Bolb object to dataURI:
+### 2. Transform Blob object to dataURI
+Using [FileReader.readAsDataURL()](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL), we can transform a Blob object to dataURI:
 
 ```js
 function blobToDataURI(blob) {
