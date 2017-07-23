@@ -1,59 +1,25 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset='utf-8'>
-  <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
-  <meta name="author" content="Ray">
-  <meta name="description" content="Ray's Blog">
-  <meta name="keywords" content="emptysea,php,mysql">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <base href="{{site.url}}" />
-  <link rel="icon" type="image/x-icon" href="/images/star.png">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <!--[if lt IE 9]>
-    <script src="//cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-  <![endif]-->
-  <title>Emptysea-{{page.title}}</title>
+---
+layout: site
+---
+<meta name="keywords" content="emptysea,javascript,glsl,creative coding,php,mysql">
 </head>
-
 <body>
-  <div id="content" class="inner archives">
-    <div class="navi">
-      <a href="{{site.url}}"><img title="Welcome to Ray's emptysea!" src="/images/avatar.jpg" /></a>
-    </div>
-    <article class="fancy-underline">
-      <h1 class="title">Ray's EmptySea</h1>
-      <div class="entry-content" id="articles">
-        {{content}}
-      </div>
-    </article>
-    {% if page.previous or page.next %}
-    <nav id="pagenavi">
-      {% if page.previous %}
-      <a href="{{page.previous.url}}" class="prev">{{page.previous.title}}</a> {% endif %} {% if page.next %}
-      <a href="{{page.next.url}}" class="next">{{page.next.title}}</a> {% endif %}
-      <a class="center" href="http://ray7551.github.io">Archives</a>
-    </nav>
-    {% endif %}
+<div id="content" class="inner archives">
+  <div class="navi">
+    <a href="{{site.url}}"><img title="Welcome to Ray's emptysea!" src="http://empty.qiniudn.com/img/avatar.jpg"/></a>
   </div>
-  <footer id="footer" class="fancy-underline">
-    &copy; 2013-2017 <a href="mailto:ray7551@gmail.com">Ray</a>, all rights reserved
-    <br> Powered by <a href="http://jekyllrb.com/" target="_blank">jekyll</a> and <a href="https://github.com/ray7551/ray7551.github.io" target="_blank">github</a>.
-  </footer>
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-26088031-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script');
-    ga.type = 'text/javascript';
-    ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(ga, s);
-  })();
-  </script>
-</body>
-
-</html>
+  <article class="fancy-underline">
+    <h1 class="title fancy-text">Ray's EmptySea</h1>
+    <div class="entry-content" id="articles">
+      {{content}}
+    </div>
+  </article>
+  {% if page.previous or page.next %}
+  <nav id="pagenavi">
+    {% if page.previous %}
+    <a href="{{page.previous.url}}" class="prev">{{page.previous.title}}</a> {% endif %} {% if page.next %}
+    <a href="{{page.next.url}}" class="next">{{page.next.title}}</a> {% endif %}
+    <a class="center" href="http://ray7551.github.io">Archives</a>
+  </nav>
+  {% endif %}
+</div>

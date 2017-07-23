@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+  <meta name="author" content="Ray">
+  <meta name="description" content="Ray's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <base href="{{site.url}}" />
+  <link rel="icon" type="image/x-icon" href="/images/star.png">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]>
+  <script src="//cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <![endif]-->
+  <title>Emptysea-{{page.title}}</title>
+
+      {{content}}
+<footer id="footer" class="fancy-underline">
+  &copy; 2013-2017 <a href="http://github.com/ray7551" class="fancy-text" data-fancy-text-min="40" data-fancy-text-max="110" title="email: ray7551#gmaildotcom">Ray</a>
+  <br> Powered by <a href="http://jekyllrb.com/" target="_blank">jekyll</a> and <a href="https://github.com/ray7551/ray7551.github.io" target="_blank">github</a>.
+</footer>
+
+
+<script>
+  var forEach = Array.prototype.forEach;
+  function random(a, b) {
+    return Math.floor(Math.random() * Math.abs(a - b) + Math.min(a, b));
+  }
+  function randomRgb(min, max) {
+    min = Math.min(min, 255);
+    max = Math.min(max, 255);
+    return 'rgb(' + random(min, max) + ',' + random(min, max) + ',' + random(min, max) + ')';
+  }
+  function fancy(el, min, max) {
+    min = min || 150;
+    max = max || min + 100;
+    var fancyChars = el.getElementsByClassName('fancy-text-char');
+    forEach.call(fancyChars, function (el) {
+      var timeoutId;
+      var originColor = el.style.color;
+      el.addEventListener('mouseenter', function () {
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+        el.style.color = randomRgb(min, max);
+        timeoutId = setTimeout(function () {
+          el.style.color = originColor;
+          timeoutId = undefined;
+        }, 500);
+      })
+    });
+  }
+
+  var inlineElements = document.getElementsByClassName('fancy-text');
+  forEach.call(inlineElements, function(el) {
+    el.innerHTML = Array.prototype.reduce.call(el.textContent, function (str, char) {
+      return str + (char === ' ' ?  '&nbsp;' : '<span class="fancy-text-char">' + char + '</span>');
+    }, '');
+
+    var min = el.getAttribute('data-fancy-text-min');
+    var max = el.getAttribute('data-fancy-text-max');
+    fancy(el, min, max);
+  });
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-26088031-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+
+</html>

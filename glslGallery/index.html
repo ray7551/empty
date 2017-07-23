@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+  <title>GLSL Gallery</title>
+
+  <style>
+    body {
+      height: 100%;
+      margin: 0;
+      background: #272822;
+    }
+  </style>
+  <!-- GLSL Gallery -->
+  <link type="text/css" rel="stylesheet" href="stylesheets/glslGallery.css">
+  <script type="text/javascript" src="build/glslGallery.js"></script>
+</head>
+<body>
+<div id="gallery"></div>
+
+<script>
+  new GlslGallery(document.getElementById('gallery'), {
+    clickRun: './customPlayer/index.html?id=',
+    logs:[
+      170722165718, 170722181420,
+//            160313030533,160313025607,160313020334,160308160958,160308014412,160307213819,160306213426,160304203554,160304202332,160302022724,160219112614,160302003807,160302102102,160302101618
+      '10/ikeda-00','10/ikeda-03','10/ikeda-04',160401213245,160313193711,160313030533,160313025607,160313020334,160308160958,160308014412,160307213819,160306213426,160304203554,160304202332,160302022724,160219112614,160302003807,160302102102,160302101618
+    ],
+    openFrameIcon: false
+    // showAuthor:false,
+    // hoverPreview:false
+  });
+</script>
+</body>
+</html>

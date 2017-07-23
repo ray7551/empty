@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Averia Libre';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Averia Libre Regular'), local('AveriaLibre-Regular'), url(http://empty.qiniudn.com/font/AveriaLibre.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
 *{margin:0;padding:0;}
 br {line-height: 2.4}
 li {line-height: 2;}
@@ -5,7 +12,7 @@ p code{display: inline-block;}
 li pre code {display: inline-block;}
 body{
   background:#f8f8f5;
-  font: normal 16px/1.8 TIBch, 'Classic Grotesque W01', 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;
+  font: normal 16px/1.8 Helvetica, 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;
   color:#333;
 }
 ::selection {background:#dee;color:#555;}
@@ -18,9 +25,11 @@ body{
   }
 }
 
+h1, h2, h3, h4, h5, h6, footer {
+  font-family: 'Averia Libre', "Helvetica Neue", "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;
+}
 h1, h2, h3, h4, h5, h6 {
   color: #222222;
-  font-family: "Helvetica Neue", "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;
 }
 h1 {
   font-weight: bold;
@@ -196,7 +205,7 @@ article .entry-content .video-container iframe,article .entry-content .video-con
   .post .entry-content{margin-left:0;}
 }
 
-.archives article{font: 1rem Georgia,Times,STZhongSong,STSong,SimSun,serif;}
+.archives article{font: 1.1rem/2.1 'Averia Libre', Helvetica, 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, sans-serif;}
 .archives time {display: inline-block; width: 6.6rem;}
 @media screen and (max-width:620px){
   .archives time{
