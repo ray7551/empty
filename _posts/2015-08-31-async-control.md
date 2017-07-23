@@ -6,41 +6,71 @@ keywords: async, javascript
 tags: javascript
 ---
 
-　　上篇说到异步控制的一个更复杂的情况：有多个不同的异步任务 t1、t2、t3，在不引入 Promise 机制的情况下，如何串联执行。对于那些不想引入 Promise 的小类库来说，这个问题有重要意义。  
-　　引入 Promise 会带来 Promise 的复杂性，对于没有完全理解它的人而言，很容易错误地使用它。在我翻译的[这篇文章](https://github.com/mattdesl/promise-cookbook/blob/master/README.zh.md#小模块中的-promise)中，还提到了一些其它的不使用 Promise 的原因。  
-　　解决这个问题，有三个思路：
+　　上篇说到异步控制的一个更复杂的情况：有多个不同的异步任务 t1、t2、t3，在不引入 Promise 机制的情况下，如何串联执行（按任务队列顺序，一个执行完毕再执行下一个，并收集每个任务的返回值）。对于那些不想引入 Promise 的小类库来说，这个问题有重要意义。  
 
-1. 使用类似 async 库的做法，使用原始的回调式写法，控制异步任务流程；
-2. 基本原理和第一个思路一样基于回调，区别在于用构造函数封装变量；
+　　我们先来看看引入 Promise 的写法：
+
+```javascript
+function promiseSerial(tasks) {
+  finalTaskPromise = tasks.reduce(function (prevTaskPromise, task) {
+    return prevTaskPromise.then(task);
+  }, Promise.resolve());
+
+  return finalTaskPromise;
+}
+
+function clog() {
+  var now = new Date();
+  console.log([].slice.call(arguments).join(' ') + '   ' + now.getSeconds() + '.' + now.getMilliseconds());
+}
+var tasks = [
+  // task 不能是暴露在外的 new Promise，必须外包一个函数返回这个 Promise，
+  // 否则就不能达到串联执行的效果
+  () => new Promise((resolve) => setTimeout(() => {
+    clog(1); resolve(1);
+  },1000)),
+  () => new Promise((resolve) => setTimeout(() => {
+    clog(2); resolve(2);
+  },2000)),
+  () => new Promise((resolve) => setTimeout(() => {
+    clog(3); resolve(3);
+  },3000))
+];
+promiseSerial(tasks);
+```
+
+　　引入 Promise 会带来 Promise 的复杂性，对于没有完全理解它的人而言，很容易错误地使用它。在我翻译的[这篇文章](https://github.com/mattdesl/promise-cookbook/blob/master/README.zh.md#小模块中的-promise)中，还提到了一些其它的不使用 Promise 的原因。  
+　　实现异步任务的串联执行，有三个思路：
+
+1. 使用类似 async 库的做法，使用原始的回调 + 递归，控制异步任务流程；
+2. 同样基于回调 + 递归，但是用构造函数封装变量；
 3. 基于 ES6 Generator 实现。
 
 　　本文将从最简单原始的实现开始，依次实现三种做法。  
 　　为方便讨论，我们先定义三个异步任务 t1、t2、t3，将会分别从 GitHub API 取得不同的 response status code。
 
 ```javascript
-function ajax(url, callback) {
-  fetch(url).then(function(response) {
-    callback(response.status);
-    return response.blob();
-  });
+function clog() {
+  var now = new Date();
+  console.log([].slice.call(arguments).join(' ') + '   ' + now.getSeconds() + '.' + now.getMilliseconds());
 }
 var t1 = function(callback) {
-  ajax('http://api.github.com', function(response) {
-    console.log(response);
-    callback(response);
-  });
+  setTimeout(function() {
+    clog(1);
+    callback(1);
+  }, 1000);
 };
 var t2 = function(callback) {
-  ajax('http://api.github.com/user', function(response) {
-    console.log(response);
-    callback(response);
-  });
+  setTimeout(function() {
+    clog(2);
+    callback(2);
+  }, 2000);
 };
 var t3 = function(callback) {
-  ajax('http://api.github.com/xxx', function(response) {
-    console.log(response);
-    callback(response);
-  });
+  setTimeout(function() {
+    clog(3);
+    callback(3);
+  }, 3000);
 };
 ```
 
@@ -197,12 +227,14 @@ Series.prototype.run = function(callback, tasks) {
     }
   });
 };
-var taskSeries = new Series();
-taskSeries.run(function(results) {
-  console.log('results:', results);
+
+clog(0);
+new Series().run(function(results) {
+  clog('results:', results);
 }, [t1, t2, t3]);
 ```
 
+<a class="jsbin-embed" href="http://jsbin.com/kaquxe/34/embed?js,console">在线预览</a>
 <a class="jsbin-embed" href="http://jsbin.com/kaquxe/18/embed?js,console">在线预览</a>
 
 　　像这样，用构造函数做封装之后，就不会污染全局作用域了。
@@ -311,6 +343,10 @@ var seriesGenerator = function *(tasks) {
 
 ## 结语
 　　以上的几种实现，都没有引入 Promise。对于那些不想引入 Promise 的小类库来说，async 库是一个不错的选择。具体到串联执行异步任务这个问题，除了 async 库使用的纯回调式实现之外，还可以使用更清晰 `this` 和构造函数的版本。最后，借助 Generator，我们成功地消除了大部分的回调，异步的代码变得和同步代码一样清晰易读。  
-　　很多人认为最终的解决方案，必须是 [ES7 的 Async Functions](http://tc39.github.io/ecmascript-asyncawait/)。在现阶段，基于 Generator 的方案已经可以满足基本要求了。
+　　很多人认为最终的解决方案，必须是 [ES7 的 Async Functions](http://tc39.github.io/ecmascript-asyncawait/)，但 Async Functions 和 Promise 一样，有一个共同点让人诟病：
+
+一旦你在项目中引入了 Promise 或者 Async Functions，那么你就不得不（有时候是忍不住）在更多的地方使用它们。
+
+　　在现阶段，基于 Generator 的方案已经可以满足基本要求了。
 
 <script src="http://static.jsbin.com/js/embed.min.js?3.34.2"></script>
