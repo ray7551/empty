@@ -257,7 +257,7 @@ article .entry-content h3{margin-left: 2.1em;}
 }
 .full .title {
   position: fixed;
-  top: 4em;
+  bottom: 2em;
   left: 1em;
   font-size: 1em;
   color: #eee;
