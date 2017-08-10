@@ -247,9 +247,10 @@ article .entry-content h3{margin-left: 2.1em;}
   height: 100%;
 }
 .full .title {
-  left: 140px;
   position: fixed;
-  text-align: center;
+  top: 1em;
+  left: 140px;
+  font-size: 1em;
   color: #eee;
 }
 .full + footer {
