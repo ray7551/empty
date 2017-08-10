@@ -1,0 +1,18 @@
+---
+layout: site
+---
+<!-- layout for posts -->
+<meta name="keywords" content="{{page.keywords | append: ','}}{{page.tags }},emptysea">
+</head>
+<body>
+	<div id="content" class="full">
+    <div class="navi">
+      <a href="{{site.url}}"><img title="Welcome to Ray's emptysea!" src="http://empty.qiniudn.com/img/avatar.jpg" /></a>
+    </div>
+
+		<article class="post">
+			<h1 class="title fancy-text">{{page.title}}</h1>
+			{{content}}
+		</article>
+
+	</div>
